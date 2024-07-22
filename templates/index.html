@@ -1,4 +1,19 @@
 <!-- extend base template -->
 {% extends "base.html" %} {% block content %}
-<h1>SpookyChat</h1>
+<section class="chat-section">
+  <div class="message-board">
+    <div class="message-output">
+      <p id="response"></p>
+    </div>
+    <div class="message-input">
+      <input
+        type="text"
+        id="message"
+        name="message"
+        placeholder="Enter a Message"
+      />
+      <button onclick="sendMessage()">Send</button>
+    </div>
+  </div>
+</section>
 {% endblock %}

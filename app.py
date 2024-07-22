@@ -12,6 +12,7 @@ import openai
 from flask import Flask, request, jsonify
 from index import Index
 
+messageHistory = []
 
 # Initializes the Flask application
 app = Flask(__name__)
@@ -21,6 +22,13 @@ app = Flask(__name__)
 openai.api_key = os.getenv('OPENAI_API_KEY')
 
 
+def add_to_history(message, response):
+    data = {
+        'message': message,
+        'response': response,
+    }
+    messageHistory.append(data)
+    
 
 # URL routing for the main landing page
 app.add_url_rule('/',
@@ -45,6 +53,10 @@ def chat():
         ]
     )
     response = completion.choices[0].message['content']
+        
+    add_to_history(message, response)
+    print(messageHistory)
+
     return jsonify({"response":response})
 
 
