@@ -2,50 +2,48 @@
 {% block css %}
 <link rel="stylesheet" href="../../static/css/chat.css" />
 {% endblock %} {% extends "base.html" %} {% block content %}
-<main>
-  <div class="chat-box">
-    <div class="chat-title">
-      <div class="chat-dropdown-section">
-        <h2>Spooky Chat</h2>
-        <button class="dropdown-button" type="button">
-          <box-icon name="chevron-down"></box-icon>
-        </button>
-        <div class="dropdown-content">
-          <button class="delete" type="button">Clear Chat</button>
-        </div>
-      </div>
-    </div>
-    <div class="popup-content">
-      <div class="message-display">
-        {% for message in messages %}
-        <div class="message-container">
-          {% if message.role == "user" %}
-          <p class="user-message">{{ message.content }}</p>
-          {% else %}
-          <p class="bot-message">{{ message.content }}</p>
-          {% endif %}
-        </div>
-        {% endfor %}
-      </div>
-      <div class="message-input-container">
-        <div class="message-input">
-          <input
-            type="text"
-            id="message"
-            name="message"
-            placeholder="Enter a Message"
-          />
-          <button class="send" type="button">
-            <box-icon
-              name="send"
-              size="xs"
-              color="#777777"
-              type="solid"
-            ></box-icon>
-          </button>
-        </div>
+<div class="chat-box">
+  <div class="chat-title">
+    <div class="chat-dropdown-section">
+      <h2>Spooky Chat</h2>
+      <button class="dropdown-button" type="button">
+        <box-icon name="chevron-down"></box-icon>
+      </button>
+      <div class="dropdown-content">
+        <button class="delete" type="button">Clear Chat</button>
       </div>
     </div>
   </div>
-</main>
+  <div class="popup-content">
+    <div class="message-display">
+      {% for message in messages %}
+      <div class="message-container">
+        {% if message.role == "user" %}
+        <p class="user-message">{{ message.content }}</p>
+        {% else %}
+        <p class="bot-message">{{ message.content }}</p>
+        {% endif %}
+      </div>
+      {% endfor %}
+    </div>
+    <div class="message-input-container">
+      <div class="message-input">
+        <input
+          type="text"
+          id="message"
+          name="message"
+          placeholder="Enter a Message"
+        />
+        <button class="send" type="button">
+          <box-icon
+            name="send"
+            size="xs"
+            color="#777777"
+            type="solid"
+          ></box-icon>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
 {% endblock %}
