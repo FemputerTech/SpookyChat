@@ -6,15 +6,16 @@ from flask import render_template
 from flask.views import MethodView
 
 
-class Index(MethodView):
+class Chat(MethodView):
     """
     Handles the index (home) page.
 
     Methods:
     -------
     get(): Handles GET requests to the index (home) page.
+    post(): Handles the openai chat.
+    delete(): Deletes messages from the chat.
     """
-    
     
     def get(self):
         """
@@ -25,5 +26,12 @@ class Index(MethodView):
         response : str
             The rendered HTML template for the index page.
         """
-        print({"details":"It's aliiiiive!!"})
         return render_template("index.html")
+
+
+    def post(self):
+        return
+    
+
+    def delete(self):
+        return
