@@ -1,17 +1,20 @@
 async function sendMessage() {
-  const message = document.getElementById("message");
+  const userMessageInput = document.getElementById("message");
+  const userMessageContent = userMessageInput.value;
+  const userMessage = { content: userMessageContent, role: "user" };
+  this.appendMessage(userMessage);
+  userMessageInput.value = "";
   try {
     const response = await fetch("/chat", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ message: message.value }),
+      body: JSON.stringify({ message: userMessageContent }),
     });
-
     const data = await response.json();
-
-    document.getElementById("response").textContent = data.response;
+    const botMessage = { content: data.response, role: "bot" };
+    this.appendMessage(botMessage);
   } catch (error) {
     console.error("Error sending message:", error);
   }
