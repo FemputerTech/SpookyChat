@@ -1,13 +1,19 @@
+@import url("https://fonts.googleapis.com/css2?family=Creepster&family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=DM+Serif+Display:ital@0;1&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
 * {
   box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+  font-weight: 400;
+  font-style: normal;
   margin: 0;
   padding: 0;
 }
 
 :root {
-  --primary: #027bff;
-  --primary-muted: #3898ff;
-  --primary-dark: #026de2;
+  --primary: #6cd562;
+  --primary-muted: #66ce5f;
+  --primary-dark: #2b7d49;
 
   --background: #fff;
   --background-dark: #09192b;
@@ -28,11 +34,21 @@ body {
   overflow-x: hidden;
 }
 
+header {
+  position: fixed;
+  display: flex;
+  justify-content: space-between;
+  padding: 30px;
+  width: 100%;
+  min-height: 80px;
+  top: 0;
+  left: 0;
+}
+
 main {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: purple;
   width: 100vw;
   height: 100vh;
 }
