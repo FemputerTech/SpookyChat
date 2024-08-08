@@ -1,0 +1,106 @@
+/* ****************** Navbar ****************** */
+header .logo {
+  display: flex;
+  justify-content: space-between;
+  align-self: stretch;
+}
+
+header .logo img {
+  width: 18px;
+  margin-right: 6px;
+}
+
+header .logo .logo-text span,
+header .logo .logo-text h1 {
+  font-family: "Creepster", system-ui;
+  font-weight: 400;
+  font-style: normal;
+}
+
+header nav .navbar-toggle {
+  display: flex;
+  justify-content: flex-end;
+  height: 24px;
+}
+
+header nav .navbar-toggle:hover {
+  cursor: pointer;
+}
+
+header nav .nav-list {
+  display: none;
+  flex-direction: column;
+  align-items: flex-end;
+  align-self: stretch;
+  list-style-type: none;
+}
+
+header nav .nav-item {
+  margin-top: 10px;
+}
+
+header nav .nav-link {
+  color: var(--text-normal);
+  text-decoration: none;
+  text-transform: capitalize;
+}
+
+header nav.nav-link.active,
+header nav .nav-link:hover {
+  color: var(--primary);
+  font-weight: 500;
+}
+
+@media (min-width: 481px) {
+  header .logo {
+    align-items: center;
+  }
+
+  header nav .navbar-toggle {
+    display: none;
+  }
+
+  header nav {
+    display: flex;
+    align-items: center;
+    align-self: stretch;
+  }
+
+  header nav .nav-list {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
+
+  header nav .nav-item {
+    display: flex;
+    align-items: center;
+    align-self: stretch;
+    margin-left: 20px;
+  }
+
+  header nav .nav-link {
+    display: flex;
+    align-items: center;
+    align-self: stretch;
+    color: var(--text-normal);
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 700;
+    text-decoration: none;
+    text-transform: capitalize;
+  }
+
+  header nav .nav-link.active,
+  header nav .nav-link:hover {
+    color: var(--primary);
+    border-radius: 50px;
+    font-weight: 700;
+  }
+}
+
+@media (min-width: 769px) {
+  header nav .nav-link {
+    padding: 0 10px;
+  }
+}
