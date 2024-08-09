@@ -8,11 +8,29 @@ function toggleNavList() {
   }
 }
 
+function appendMessage(message) {
+  const messageDisplay = document.querySelector(".message-display");
+  const messageDiv = document.createElement("div");
+  messageDiv.classList = "message-container";
+  messageDisplay.appendChild(messageDiv);
+  if (message.role === "user") {
+    const userMessage = document.createElement("p");
+    userMessage.classList.add("user-message");
+    userMessage.textContent = `${message.content}`;
+    messageDiv.appendChild(userMessage);
+  } else {
+    const botMessage = document.createElement("p");
+    botMessage.classList.add("bot-message");
+    botMessage.textContent = `${message.content}`;
+    messageDiv.appendChild(botMessage);
+  }
+}
+
 async function sendMessage() {
   const userMessageInput = document.getElementById("message");
   const userMessageContent = userMessageInput.value;
   const userMessage = { content: userMessageContent, role: "user" };
-  this.appendMessage(userMessage);
+  appendMessage(userMessage);
   userMessageInput.value = "";
   try {
     const response = await fetch("/chat", {
