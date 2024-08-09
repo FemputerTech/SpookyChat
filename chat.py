@@ -1,37 +1,31 @@
-"""
-This module defines the view for handling GET requests to the home page
-of the SpookyChat application.
-"""
-from flask import render_template
+from flask import request, jsonify
 from flask.views import MethodView
+import openai
+import os
 
+
+# Retrieve API key from environment variables
+openai.api_key = os.getenv('OPENAI_API_KEY')
 
 class Chat(MethodView):
-    """
-    Handles the index (home) page.
-
-    Methods:
-    -------
-    get(): Handles GET requests to the index (home) page.
-    post(): Handles the openai chat.
-    delete(): Deletes messages from the chat.
-    """
     
-    def get(self):
-        """
-        Renders the index (home) page.
-        
-        Returns:
-        --------
-        response : str
-            The rendered HTML template for the index page.
-        """
-        return render_template("index.html")
-
-
     def post(self):
-        return
+        message = request.json.get('message')
+
+        if not message:
+            return jsonify({"error":"No message provided"})
+
+        completion = openai.ChatCompletion.create(
+            model="gpt-4o-mini",
+            messages=[
+                {"role": "system", "content": "You are a haunted entity from a forgotten realm. Your purpose is to engage with the user in a mysterious and eerie manner, blending dark humor with chilling insights."},
+                {"role": "user", "content": message}
+            ]
+        )
+        response = completion.choices[0].message['content']
+        
+        return jsonify({"response":response})
     
 
     def delete(self):
-        return
+        pass

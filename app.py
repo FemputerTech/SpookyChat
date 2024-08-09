@@ -9,22 +9,21 @@ To run the application, execute this script.
 """
 from flask import Flask, render_template
 from chat import Chat
-import openai
-import os
 
 
 # Initializes the Flask application
 app = Flask(__name__)
 
 
-# Retrieve API key from environment variables
-openai.api_key = os.getenv('OPENAI_API_KEY')
+@app.route("/", methods=["GET"])
+def index():
+    return render_template("index.html")
 
 
 # URL routing for the main landing page
-app.add_url_rule('/',
+app.add_url_rule('/chat',
                  view_func=Chat.as_view('chat'),
-                 methods=["GET", "POST", "DELETE"]
+                 methods=["POST", "DELETE"]
                 )
 
 
